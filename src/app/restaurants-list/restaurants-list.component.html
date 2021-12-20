@@ -1,0 +1,20 @@
+
+
+<div class="addRestaurant">
+
+    <input [(ngModel)]="name" type="text">
+    <input [(ngModel)]="address" type="text">
+    <input [(ngModel)]="phone" type="text">
+    <button (click)="addRestaurant()">Ajouter</button>
+</div>
+<div class="list">
+    <div class="list-item-container">
+        <p >Nom</p> <p>Adresse</p> <p>Téléphone</p> 
+    </div>
+  <ul *ngFor="let restaurant  of restaurants, index as i">
+    <li>
+        <div *ngIf="!edit" class="list-item-container"><p (click)="editRestaurant()">{{restaurant.name}}</p> <p>{{restaurant.address}}</p> <p>{{restaurant.phone}}</p>  <button (click)="deleteRestaurant(i)">Supprimer</button></div>
+        <div *ngIf="edit" class="list-item-container"><input value="{{restaurant.name}}"> <input value="{{restaurant.address}}"> <input value="{{restaurant.phone}}"> <button (click)="modifyRestaurant(i)">Modifier</button></div>
+    </li>
+  </ul>
+</div>
